@@ -3,8 +3,8 @@ import java.util.Vector;
 
 
 public class Kwik {
-
 	private static Vector<LineInterface> lines;
+
 	
 	public static void main(String[] args) {
 		
