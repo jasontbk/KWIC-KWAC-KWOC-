@@ -11,6 +11,7 @@ public class ReadInput{
 		System.out.printf("Number of lines to enter: ");
 		Scanner myScan = new Scanner(System.in);
 		int numOfLines = myScan.nextInt();
+		myScan.nextLine();
 		
 		Vector<LineInterface> myLineVector = new Vector<LineInterface>();
 		
