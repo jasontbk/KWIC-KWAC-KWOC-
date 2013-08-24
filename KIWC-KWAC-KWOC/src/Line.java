@@ -1,17 +1,47 @@
+public class Line implements LineInterface {
 
-public class Line {
-
-	/**
-	 * @param args
-	 */
-	
-	String oString;
-	String[] tStrings;
+	String originalString;
+	String[] tokenizedString;
+	int size;
 	int[][] indexes;
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+	public Line(String input) {
+		originalString = input;
+		tokenizedString = input.split(" ");
+		size = tokenizedString.length;
+		generateIndexes();
+	}
+
+	@Override
+	public String getOrginalString() {
+		return originalString;
+	}
+
+	@Override
+	public String[] getTokenizedString() {
+		return tokenizedString;
+	}
+
+	@Override
+	public int[][] getIndexes() {
+		return indexes;
+	}
+
+	@Override
+	public int getSize() {
+		return size;
+	}
+	
+	private void generateIndexes(){
+		indexes=new int[size][size];
+		for(int i=0;i<size;i++){
+			int k=i;
+			for(int j=0;j<size;j++){
+				indexes[i][j]=k%size;
+				k++;
+			}
+		}
+		
 	}
 
 }
