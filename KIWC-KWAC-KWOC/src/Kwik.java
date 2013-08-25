@@ -4,15 +4,25 @@ import java.util.Vector;
 public class Kwik {
 	private Vector<LineInterface> lines;
 	private Vector<String> allStrings;
-	private String[] ignoreWords;
+	private Vector<String> ignoreWords;
 
 	public static void main(String[] args) {
 		Kwik myKwik = new Kwik();
-
+		
 		myKwik.readLines();
+		myKwik.readIgnoreWords();
 		myKwik.shiftLines();
-		myKwik.sortStrings();
-		myKwik.printOutput();
+		myKwik.ignoreLines();
+		
+		
+		//debug ---------------
+		for(LineInterface l : myKwik.lines){
+			System.out.println(l);
+		}
+		//-----------------------
+		
+		//myKwik.sortStrings();
+		//myKwik.printOutput();
 
 	}
 
@@ -21,13 +31,15 @@ public class Kwik {
 	}
 
 	private void readIgnoreWords() {
-		//Weizhi
-		//lines = ReadInput.readIgnoreWords();
+		ignoreWords = ReadInput.readIgnoreWords();
 	}
 
 	private void shiftLines() {
-		// Weizhi
-
+		lines = LineShifter.shiftLine(lines);
+	}
+	
+	private void ignoreLines(){
+		lines = LineIgnorer.ignoreLine(lines, ignoreWords);
 	}
 
 	private void sortStrings() {
@@ -36,6 +48,7 @@ public class Kwik {
 
 	}
 
+	/*
 	private Boolean checkIgnored(String curr){
 		for(int j=0;j<ignoreWords.length;j++){
 			if (curr.startsWith(ignoreWords[j])) return false;
@@ -43,7 +56,7 @@ public class Kwik {
 		return true;
 
 	}
-
+	
 	private void printOutput() {
 		for (int i = 0; i < allStrings.size(); i++) {
 			String curr = allStrings.get(i);
@@ -51,5 +64,5 @@ public class Kwik {
 				System.out.println(curr);
 		}
 	}
-
+	*/
 }

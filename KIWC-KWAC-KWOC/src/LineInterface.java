@@ -1,8 +1,7 @@
-public interface LineInterface {
+import java.util.List;
+import java.util.Vector;
 
-	/**
-	 * @param args
-	 */
+public interface LineInterface {
 
 	/*
 	 * This method returns the original string input
@@ -17,12 +16,22 @@ public interface LineInterface {
 	/*
 	 * This method reutnrs the array of indexes
 	 */
-	public int[][] getIndexes();
+	public Vector<Vector<Integer>> getIndexes();
+	
+	/*
+	 * This method set the array of indexes
+	 */
+	public void setIndexes(Vector<Vector<Integer>> indexes);
 
 	/*
 	 * This array returns the no of words in the string input
 	 */
 	public int getSize();
+	
+	/*
+	 * for debug
+	 */
+	public String toString();
 	
 
 }

@@ -62,4 +62,19 @@ public class ReadInput{
 		
 		return myLineVector;
 	}
+	
+	public static Vector<String> readIgnoreWords(){
+		//Get number of lines to read
+		System.out.printf("Number of words to ignore: ");
+		Scanner myScan = new Scanner(System.in);
+		int numIgnore = myScan.nextInt();
+		myScan.nextLine();
+	
+		Vector<String> ignoredList = new Vector<String>();
+		for(int i=0; i<numIgnore; i++){
+			ignoredList.add(myScan.next());
+		}
+		
+		return ignoredList;
+	}
 }
