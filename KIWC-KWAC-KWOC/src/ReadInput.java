@@ -18,6 +18,10 @@ public class ReadInput{
 		//loop through all lines and add it to myLineVector.
 		for(int i=0; i<numOfLines; i++){
 			String currLine = myScan.nextLine();
+			if(currLine.trim().length()==0){
+				i--;
+				continue;
+			}
 			LineInterface currLineInterface = new Line(currLine);
 			myLineVector.add(currLineInterface);
 		}
