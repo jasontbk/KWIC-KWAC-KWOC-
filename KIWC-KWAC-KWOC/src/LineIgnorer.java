@@ -11,13 +11,18 @@ public class LineIgnorer {
 			int size = myLine.getSize();
 			
 			//double for loop to scan through all words in myLine for any ignored word.
-			for(int i=0; i<size; i++){
-				for(int j=0; j<ignoreList.size(); j++){
-					if(myTokenizedString[i].equals(ignoreList.get(j))){
+			for(int i=0; i<size; i++){	//cycle through tokenized word
+				int j;
+				for(j=0; j<ignoreList.size(); j++){	//cycle through all ignore word
+					if(myTokenizedString[i].equalsIgnoreCase(ignoreList.get(j))){
 						ignoredWordIndex.add(i);
 						break;
 					}
 				}
+				
+				if(j==ignoreList.size()){
+					myTokenizedString[i] = Character.toUpperCase(myTokenizedString[i].charAt(0)) + myTokenizedString[i].substring(1);
+				}	
 			}
 			
 			//start from the last element to prevent infinite loop
