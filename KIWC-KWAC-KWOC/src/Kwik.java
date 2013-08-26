@@ -1,10 +1,9 @@
-import java.util.Collections;
 import java.util.Vector;
 
 public class Kwik {
 	private Vector<LineInterface> lines;
-	private Vector<String> allStrings;
 	private Vector<String> ignoreWords;
+	private Vector<String> sortedStrings;
 
 	public static void main(String[] args) {
 		Kwik myKwik = new Kwik();
@@ -13,12 +12,14 @@ public class Kwik {
 		myKwik.readIgnoreWords();
 		myKwik.shiftLines();
 		myKwik.ignoreLines();
+		myKwik.sortStrings();
+		myKwik.printOutput();
 		
 		
 		//debug ---------------
-		for(LineInterface l : myKwik.lines){
+/*		for(LineInterface l : myKwik.lines){
 			System.out.println(l);
-		}
+		}*/
 		//-----------------------
 		
 		//myKwik.sortStrings();
@@ -43,11 +44,12 @@ public class Kwik {
 	}
 
 	private void sortStrings() {
-
-		Collections.sort(allStrings, String.CASE_INSENSITIVE_ORDER);
-
+		sortedStrings=LineSorter.sortLines(lines);
 	}
 
+	private void printOutput(){
+		OutputPrinter.printOutput(sortedStrings);
+	}
 	/*
 	private Boolean checkIgnored(String curr){
 		for(int j=0;j<ignoreWords.length;j++){
