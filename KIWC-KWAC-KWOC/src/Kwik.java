@@ -1,15 +1,19 @@
 import java.util.Vector;
 
+
 public class Kwik {
 	private Vector<LineInterface> lines;
 	private Vector<String> ignoreWords;
 	private Vector<String> sortedStrings;
 
 	public static void main(String[] args) {
-		Kwik myKwik = new Kwik();
 		
-		myKwik.readLines();
-		myKwik.readIgnoreWords();
+		
+		
+		Kwik myKwik = new Kwik();
+		myKwik.getGUIInput();
+		//myKwik.readLines();
+		//myKwik.readIgnoreWords();
 		myKwik.shiftLines();
 		myKwik.ignoreLines();
 		myKwik.sortStrings();
@@ -27,13 +31,19 @@ public class Kwik {
 
 	}
 
-	private void readLines() {
+	private void getGUIInput(){
+		Vector<String> inputs=GUI.inputDisplay();
+		lines=InputProcesser.processLines(inputs.get(0));
+		ignoreWords=InputProcesser.processIgnoreWords(inputs.get(1));
+	}
+	
+/*	private void readLines() {
 		lines = ReadInput.readLine();
 	}
 
 	private void readIgnoreWords() {
 		ignoreWords = ReadInput.readIgnoreWords();
-	}
+	}*/
 
 	private void shiftLines() {
 		lines = LineShifter.shiftLine(lines);
@@ -49,22 +59,6 @@ public class Kwik {
 
 	private void printOutput(){
 		OutputPrinter.printOutput(sortedStrings);
+		GUI.outputPrinter(sortedStrings);
 	}
-	/*
-	private Boolean checkIgnored(String curr){
-		for(int j=0;j<ignoreWords.length;j++){
-			if (curr.startsWith(ignoreWords[j])) return false;
-		}
-		return true;
-
-	}
-	
-	private void printOutput() {
-		for (int i = 0; i < allStrings.size(); i++) {
-			String curr = allStrings.get(i);
-			if (checkIgnored(curr))
-				System.out.println(curr);
-		}
-	}
-	*/
 }

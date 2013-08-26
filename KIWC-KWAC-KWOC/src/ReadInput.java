@@ -22,6 +22,7 @@ public class ReadInput{
 			myLineVector.add(currLineInterface);
 		}
 		
+		myScan.close();
 		return myLineVector;
 	}
 	
@@ -75,6 +76,7 @@ public class ReadInput{
 			ignoredList.add(myScan.next());
 		}
 		
+		myScan.close();
 		return ignoredList;
 	}
 }
