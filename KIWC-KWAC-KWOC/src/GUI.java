@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Dialog.ModalityType;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Vector;
@@ -19,14 +21,15 @@ public class GUI {
 	private static String ignoreWords;
 	public static Vector<String> inputDisplay(){
 
-		final JLabel inputLabel=new JLabel("Input Text:");
+		final JLabel inputLabel=new JLabel("Input Text (Seperate each item in the list with a new line) :");
 
 		final JTextArea inputField = new JTextArea(5,20);
-		inputField.setBorder(BorderFactory.createLineBorder(Color.black));
+		inputField.setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255)));
 
-		final JLabel ignoreLabel=new JLabel("Ignore Words");
+		final JLabel ignoreLabel=new JLabel("Ignore Words (Seperate each ignore word with a space) : ");
 
 		final JTextField ignoreField = new JTextField();
+		ignoreField.setBorder(BorderFactory.createLineBorder(new Color(153, 153, 255)));
 
 		final JComponent[] inputPaneComponents = new JComponent[] { inputLabel,inputField,ignoreLabel,ignoreField };
 
@@ -43,7 +46,13 @@ public class GUI {
 		dialog.setContentPane(inputPane);
 		dialog.setLocation(450, 80);
 
-
+		dialog.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent we) {
+				System.out.println("User click on X button.");
+				System.exit(0);
+			}
+		});
+		
 		inputPane.addPropertyChangeListener(new PropertyChangeListener(){
 			public void propertyChange(PropertyChangeEvent e) {
 
@@ -64,12 +73,14 @@ public class GUI {
 
 						System.out.println("User clicked on cancel button");
 						dialog.setVisible(false);
+						System.exit(0);
 						break;
 					}
 					case JOptionPane.CLOSED_OPTION:{
 						System.out.println("User clicked on close button");
 						dialog.setVisible(false);
-						break;
+						System.exit(0);
+						
 					}
 
 					}

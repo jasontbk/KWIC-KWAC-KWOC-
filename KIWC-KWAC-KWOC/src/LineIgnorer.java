@@ -15,6 +15,7 @@ public class LineIgnorer {
 				int j;
 				for(j=0; j<ignoreList.size(); j++){	//cycle through all ignore word
 					if(myTokenizedString[i].equalsIgnoreCase(ignoreList.get(j))){
+						myTokenizedString[i] = myTokenizedString[i].toLowerCase();
 						ignoredWordIndex.add(i);
 						break;
 					}
