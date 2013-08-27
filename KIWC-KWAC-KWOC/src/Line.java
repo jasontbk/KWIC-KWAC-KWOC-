@@ -9,19 +9,18 @@ public class Line implements LineInterface {
 
 	public Line(String input) {
 		originalString = input;
-		tokenizedString = input.split(" ");
-		size = tokenizedString.length;
-		
-		indexes = new Vector<Vector<Integer>>();
-		for(int i=0; i<size; i++){
-			indexes.add(new Vector<Integer>());
-		}
 	}
 
 	@Override
 	public String getOrginalString() {
 		return originalString;
 	}
+
+	@Override
+	public void setTokenizedString(String[] tokenizedStrVector){
+		this.tokenizedString=tokenizedStrVector;
+	}
+
 
 	@Override
 	public String[] getTokenizedString() {
@@ -34,10 +33,15 @@ public class Line implements LineInterface {
 	}
 
 	@Override
+	public void setSize(int size) {
+		this.size=size;
+	}
+	
+	@Override
 	public int getSize() {
 		return size;
 	}
-	
+
 	/*
 	private void generateIndexes(){
 		indexes=new int[size][size];
@@ -48,15 +52,15 @@ public class Line implements LineInterface {
 				k++;
 			}
 		}
-		
+
 	}
-	*/
+	 */
 
 	@Override
 	public void setIndexes(Vector<Vector<Integer>> indexes) {
 		this.indexes=indexes;
 	}
-	
+
 	/**
 	 * for debug purpose
 	 */
@@ -74,5 +78,6 @@ public class Line implements LineInterface {
 		}
 		return str;
 	}
+
 
 }

@@ -8,12 +8,18 @@ public interface LineInterface {
 	public String getOrginalString();
 
 	/*
+	 * This method tokenizes the String into its individual words
+	 */	
+	public void setTokenizedString(String[] tokenStrVector);
+	
+	/*
 	 * This method returns the array of tokenized words from the string input
 	 */
+	
 	public String[] getTokenizedString();
 
 	/*
-	 * This method reutnrs the array of indexes
+	 * This method returns the array of indexes
 	 */
 	public Vector<Vector<Integer>> getIndexes();
 	
@@ -21,7 +27,12 @@ public interface LineInterface {
 	 * This method set the array of indexes
 	 */
 	public void setIndexes(Vector<Vector<Integer>> indexes);
-
+	
+	/*
+	 * This method set the size (number of words) of the Line
+	 */
+	public void setSize(int size);
+	
 	/*
 	 * This array returns the no of words in the string input
 	 */
@@ -31,6 +42,5 @@ public interface LineInterface {
 	 * for debug
 	 */
 	public String toString();
-	
 
 }

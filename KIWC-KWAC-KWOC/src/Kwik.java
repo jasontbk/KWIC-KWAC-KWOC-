@@ -7,9 +7,7 @@ public class Kwik {
 	private Vector<String> sortedStrings;
 
 	public static void main(String[] args) {
-		
-		
-		
+				
 		Kwik myKwik = new Kwik();
 		myKwik.getGUIInput();
 		//myKwik.readLines();
@@ -32,9 +30,9 @@ public class Kwik {
 	}
 
 	private void getGUIInput(){
-		Vector<String> inputs=GUI.inputDisplay();
-		lines=InputProcesser.processLines(inputs.get(0));
-		ignoreWords=InputProcesser.processIgnoreWords(inputs.get(1));
+		Vector<String> inputs = GUI.inputDisplay();
+		lines = InputProcesser.processLines(inputs.get(0));
+		ignoreWords = InputProcesser.processIgnoreWords(inputs.get(1));
 	}
 	
 /*	private void readLines() {
@@ -46,6 +44,7 @@ public class Kwik {
 	}*/
 
 	private void shiftLines() {
+		lines = LineShifter.tokenizeLine(lines);
 		lines = LineShifter.shiftLine(lines);
 	}
 	
