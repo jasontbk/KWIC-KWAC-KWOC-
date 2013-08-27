@@ -17,8 +17,8 @@ public class Line implements LineInterface {
 	}
 
 	@Override
-	public void setTokenizedString(String[] tokenizedStrVector){
-		this.tokenizedString=tokenizedStrVector;
+	public void setTokenizedString(String[] tokenizedStrArr){
+		this.tokenizedString=tokenizedStrArr;
 	}
 
 

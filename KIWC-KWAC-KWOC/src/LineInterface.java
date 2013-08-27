@@ -10,7 +10,7 @@ public interface LineInterface {
 	/*
 	 * This method tokenizes the String into its individual words
 	 */	
-	public void setTokenizedString(String[] tokenStrVector);
+	public void setTokenizedString(String[] tokenStrArray);
 	
 	/*
 	 * This method returns the array of tokenized words from the string input
