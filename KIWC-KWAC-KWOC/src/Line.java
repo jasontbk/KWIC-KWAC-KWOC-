@@ -2,10 +2,10 @@ import java.util.Vector;
 
 public class Line implements LineInterface {
 
-	String originalString;
-	String[] tokenizedString;
-	int size;
-	Vector<Vector<Integer>> indexes;
+	private String originalString;
+	private String[] tokenizedString;
+	private int size;
+	private Vector<Vector<Integer>> indexes;
 
 	public Line(String input) {
 		originalString = input;
