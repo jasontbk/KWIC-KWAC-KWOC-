@@ -17,16 +17,17 @@ public interface LineInterface {
 	 */
 	
 	public String[] getTokenizedString();
-
-	/*
-	 * This method returns the array of indexes
-	 */
-	public Vector<Vector<Integer>> getIndexes();
 	
 	/*
 	 * This method set the array of indexes
 	 */
 	public void setIndexes(Vector<Vector<Integer>> indexes);
+	
+
+	/*
+	 * This method returns the array of indexes
+	 */
+	public Vector<Vector<Integer>> getIndexes();
 	
 	/*
 	 * This method set the size (number of words) of the Line
