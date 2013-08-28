@@ -17,10 +17,10 @@ import javax.swing.JTextField;
 
 public class GUI {
 
-	private static String inputLines;
-	private static String ignoreWords;
 	public static Vector<String> inputDisplay(){
 
+		final Vector<String> inputs=new Vector<String>(); 
+		
 		final JLabel inputLabel=new JLabel("Input Text (Seperate each item in the list with a new line) :");
 
 		final JTextArea inputField = new JTextArea(5,20);
@@ -60,11 +60,15 @@ public class GUI {
 					int result=(int) inputPane.getValue();
 					switch(result){
 					case JOptionPane.OK_OPTION: {
-						inputLines= inputField.getText();
-						ignoreWords=ignoreField.getText();
+						
+						final String inputLines= inputField.getText();
+						final String ignoreWords=ignoreField.getText();
+
+						inputs.add(inputLines);
+						inputs.add(ignoreWords);
 
 						System.out.println(inputLines+"\n"+ignoreWords);
-						dialog.dispose();
+						dialog.setVisible(false);
 						break;
 					}
 
@@ -91,9 +95,7 @@ public class GUI {
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
 
-		Vector<String> inputs=new Vector<String>();
-		inputs.add(inputLines);
-		inputs.add(ignoreWords);
+
 		return inputs;
 	}
 

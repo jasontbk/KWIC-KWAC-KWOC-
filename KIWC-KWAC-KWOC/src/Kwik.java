@@ -12,11 +12,9 @@ public class Kwik {
 		while(result){
 			Kwik myKwik = new Kwik();
 			myKwik.getGUIInput();
-			//myKwik.readLines();
-			//myKwik.readIgnoreWords();
 			myKwik.shiftLines();
 			myKwik.ignoreLines();
-			myKwik.sortStrings();
+			myKwik.sortLines();
 			result=myKwik.printOutput();
 		}
 
@@ -55,7 +53,7 @@ public class Kwik {
 		lines = LineIgnorer.ignoreLine(lines, ignoreWords);
 	}
 
-	private void sortStrings() {
+	private void sortLines() {
 		sortedStrings=LineSorter.sortLines(lines);
 	}
 
