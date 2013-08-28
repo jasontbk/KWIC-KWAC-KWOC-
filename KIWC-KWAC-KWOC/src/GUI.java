@@ -44,7 +44,6 @@ public class GUI {
 		dialog.setModalityType(ModalityType.APPLICATION_MODAL);
 
 		dialog.setContentPane(inputPane);
-		dialog.setLocation(450, 80);
 
 		dialog.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
@@ -89,6 +88,7 @@ public class GUI {
 		});
 
 		dialog.pack();
+		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
 
 		Vector<String> inputs=new Vector<String>();
@@ -98,7 +98,7 @@ public class GUI {
 	}
 
 		
-	public static void outputPrinter(Vector<String> sortedStrings){
+	public static Boolean outputPrinter(Vector<String> sortedStrings){
 		String output="";
 		for(int i=0;i<sortedStrings.size();i++){
 			output+=(sortedStrings.get(i)+"\n");
@@ -116,10 +116,19 @@ public class GUI {
 
 		final JComponent[] outputPaneComponents = new JComponent[] { outputLabel,outputField};
 		
-		JOptionPane.showMessageDialog(null,
+		Object[] options = {"OK","Retry"};
+		int result=JOptionPane.showOptionDialog(null,
 				outputPaneComponents,
 			    "KWIK-KWAK-KWOC Output",
-			    JOptionPane.PLAIN_MESSAGE);
+			    JOptionPane.YES_NO_OPTION, 
+			    JOptionPane.PLAIN_MESSAGE,
+			    null,
+			    options,
+			    options[0]);
+		
+		
+		if(result==0) return false;
+		else return true;
 
 
 	}

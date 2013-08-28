@@ -7,23 +7,26 @@ public class Kwik {
 	private Vector<String> sortedStrings;
 
 	public static void main(String[] args) {
-				
-		Kwik myKwik = new Kwik();
-		myKwik.getGUIInput();
-		//myKwik.readLines();
-		//myKwik.readIgnoreWords();
-		myKwik.shiftLines();
-		myKwik.ignoreLines();
-		myKwik.sortStrings();
-		myKwik.printOutput();
-		
-		
+
+		Boolean result=true;
+		while(result){
+			Kwik myKwik = new Kwik();
+			myKwik.getGUIInput();
+			//myKwik.readLines();
+			//myKwik.readIgnoreWords();
+			myKwik.shiftLines();
+			myKwik.ignoreLines();
+			myKwik.sortStrings();
+			result=myKwik.printOutput();
+		}
+
+
 		//debug ---------------
-/*		for(LineInterface l : myKwik.lines){
+		/*		for(LineInterface l : myKwik.lines){
 			System.out.println(l);
 		}*/
 		//-----------------------
-		
+
 		//myKwik.sortStrings();
 		//myKwik.printOutput();
 
@@ -34,8 +37,8 @@ public class Kwik {
 		lines = InputProcesser.processLines(inputs.get(0));
 		ignoreWords = InputProcesser.processIgnoreWords(inputs.get(1));
 	}
-	
-/*	private void readLines() {
+
+	/*	private void readLines() {
 		lines = ReadInput.readLine();
 	}
 
@@ -47,7 +50,7 @@ public class Kwik {
 		lines = LineShifter.tokenizeLine(lines);
 		lines = LineShifter.shiftLine(lines);
 	}
-	
+
 	private void ignoreLines(){
 		lines = LineIgnorer.ignoreLine(lines, ignoreWords);
 	}
@@ -56,8 +59,8 @@ public class Kwik {
 		sortedStrings=LineSorter.sortLines(lines);
 	}
 
-	private void printOutput(){
+	private Boolean printOutput(){
 		OutputPrinter.printOutput(sortedStrings);
-		GUI.outputPrinter(sortedStrings);
+		return GUI.outputPrinter(sortedStrings);
 	}
 }
