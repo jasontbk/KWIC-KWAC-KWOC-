@@ -15,8 +15,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ * This module handles displaying of User interface for user input and output. 
+ */
 public class GUI {
 
+	/**
+	 * Setting up and display a graphical user interface to request for user input.
+	 * 
+	 * @return A Vector of Strings containing user input lines.
+	 */
 	public static Vector<String> inputDisplay(){
 
 		final Vector<String> inputs=new Vector<String>(); 
@@ -47,7 +55,6 @@ public class GUI {
 
 		dialog.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				System.out.println("User click on X button.");
 				System.exit(0);
 			}
 		});
@@ -67,20 +74,16 @@ public class GUI {
 						inputs.add(inputLines);
 						inputs.add(ignoreWords);
 
-						System.out.println(inputLines+"\n"+ignoreWords);
 						dialog.setVisible(false);
 						break;
 					}
 
 					case JOptionPane.CANCEL_OPTION:  {
-
-						System.out.println("User clicked on cancel button");
 						dialog.setVisible(false);
 						System.exit(0);
 						break;
 					}
 					case JOptionPane.CLOSED_OPTION:{
-						System.out.println("User clicked on close button");
 						dialog.setVisible(false);
 						System.exit(0);
 						
@@ -99,7 +102,12 @@ public class GUI {
 		return inputs;
 	}
 
-		
+	/**
+	 * Display the given sortedStrings to a graphical user interface.
+	 * 
+	 * @param sortedStrings The sorted lines output.
+	 * @return A boolean value indicating if user wanted to quit the program.
+	 */
 	public static Boolean outputPrinter(Vector<String> sortedStrings){
 		String output="";
 		for(int i=0;i<sortedStrings.size();i++){
@@ -131,8 +139,6 @@ public class GUI {
 		
 		if(result==0) return false;
 		else return true;
-
-
 	}
 
 }

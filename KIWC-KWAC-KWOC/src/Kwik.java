@@ -1,64 +1,69 @@
 import java.util.Vector;
 
-
+/**
+ * Main control class for KWIK. This class will determine the sequence and modules to execute.
+ */
 public class Kwik {
 	private Vector<LineInterface> lines;
 	private Vector<String> ignoreWords;
 	private Vector<String> sortedStrings;
 
 	public static void main(String[] args) {
-
 		Boolean result=true;
 		while(result){
 			Kwik myKwik = new Kwik();
 			myKwik.getGUIInput();
+			myKwik.processInput();
 			myKwik.shiftLines();
 			myKwik.ignoreLines();
 			myKwik.sortLines();
 			result=myKwik.printOutput();
 		}
-
-
-		//debug ---------------
-		/*		for(LineInterface l : myKwik.lines){
-			System.out.println(l);
-		}*/
-		//-----------------------
-
-		//myKwik.sortStrings();
-		//myKwik.printOutput();
-
 	}
 
+	/**
+	 * Get user input.
+	 */
 	private void getGUIInput(){
 		Vector<String> inputs = GUI.inputDisplay();
 		lines = InputProcesser.processLines(inputs.get(0));
 		ignoreWords = InputProcesser.processIgnoreWords(inputs.get(1));
 	}
-
-	/*	private void readLines() {
-		lines = ReadInput.readLine();
+	
+	/**
+	 * Process user input into useful representation.
+	 */
+	private void processInput(){
+		lines = InputProcesser.tokenizeLine(lines);
 	}
 
-	private void readIgnoreWords() {
-		ignoreWords = ReadInput.readIgnoreWords();
-	}*/
-
+	/**
+	 * Circular shift all lines.
+	 */
 	private void shiftLines() {
-		lines = LineShifter.tokenizeLine(lines);
 		lines = LineShifter.shiftLine(lines);
 	}
 
+	/**
+	 * Remove lines starting with ignore words.
+	 */
 	private void ignoreLines(){
 		lines = LineIgnorer.ignoreLine(lines, ignoreWords);
 	}
 
+	/**
+	 * Sort the processed line in alphabetical order.
+	 */
 	private void sortLines() {
 		sortedStrings=LineSorter.sortLines(lines);
 	}
 
+	/**
+	 * Print out the output
+	 * 
+	 * @return A boolean value indicating whether program terminates.
+	 */
 	private Boolean printOutput(){
-		OutputPrinter.printOutput(sortedStrings);
 		return GUI.outputPrinter(sortedStrings);
 	}
 }

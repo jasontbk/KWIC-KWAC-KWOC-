@@ -1,7 +1,9 @@
 import java.util.Vector;
 
+/**
+ * This class stores the information of each line. 
+ */
 public class Line implements LineInterface {
-
 	private String originalString;
 	private String[] tokenizedString;
 	private int size;
@@ -20,7 +22,6 @@ public class Line implements LineInterface {
 	public void setTokenizedString(String[] tokenizedStrArr){
 		this.tokenizedString=tokenizedStrArr;
 	}
-
 
 	@Override
 	public String[] getTokenizedString() {
@@ -42,27 +43,13 @@ public class Line implements LineInterface {
 		return size;
 	}
 
-	/*
-	private void generateIndexes(){
-		indexes=new int[size][size];
-		for(int i=0;i<size;i++){
-			int k=i;
-			for(int j=0;j<size;j++){
-				indexes[i][j]=k%size;
-				k++;
-			}
-		}
-
-	}
-	 */
-
 	@Override
 	public void setIndexes(Vector<Vector<Integer>> indexes) {
 		this.indexes=indexes;
 	}
 
 	/**
-	 * for debug purpose
+	 * Debugging method.
 	 */
 	public String toString(){
 		String str = "O: "+ originalString + "\n";
@@ -78,6 +65,4 @@ public class Line implements LineInterface {
 		}
 		return str;
 	}
-
-
 }

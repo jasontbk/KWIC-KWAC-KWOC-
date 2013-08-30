@@ -1,24 +1,15 @@
 import java.util.Vector;
 
-
+/**
+ * This module handles circular shifting of user input lines.
+ */
 public class LineShifter {
-	public static Vector<LineInterface> tokenizeLine(Vector<LineInterface> lines){
-		String currStr;
-		String[] currTokenizedString;
-		int currSize;
-		
-		for(LineInterface myLine : lines){
-			currStr=myLine.getOrginalString();
-			currTokenizedString = currStr.split(" ");
-			currSize=currTokenizedString.length;
-
-			myLine.setTokenizedString(currTokenizedString);
-			myLine.setSize(currSize);
-		}
-
-		return lines;
-	}
-		
+	/**
+	 * Circularly shift each lines for each word in the line.
+	 * 
+	 * @param lines List of lines to perform the process on.
+	 * @return A list of lines that has been circularly shifted.
+	 */
 	public static Vector<LineInterface> shiftLine(Vector<LineInterface> lines){
 		for(LineInterface myLine : lines){
 			int size = myLine.getSize();

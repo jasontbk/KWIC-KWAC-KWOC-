@@ -1,7 +1,16 @@
 import java.util.Vector;
 
-
+/**
+ * This module handles filtering lines for ignored words.
+ */
 public class LineIgnorer {
+	/**
+	 * Scan through all circular shifted lines and remove lines that starts with ignored words.
+	 * 
+	 * @param lines The list of all lines entered by user.
+	 * @param ignoreList The list of all words to be ignore.
+	 * @return A list of all lines after filtering out ignored words.
+	 */
 	public static Vector<LineInterface> ignoreLine(Vector<LineInterface> lines, Vector<String> ignoreList){	
 		for(LineInterface myLine : lines){
 			//get all the required information
@@ -41,5 +50,4 @@ public class LineIgnorer {
 		
 		return lines;
 	}
-
 }
