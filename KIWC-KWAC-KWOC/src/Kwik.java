@@ -19,6 +19,7 @@ public class Kwik {
 			myKwik.sortLines();
 			result=myKwik.printOutput();
 		}
+		System.exit(0);
 	}
 
 	/**
